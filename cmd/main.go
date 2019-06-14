@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/dghubble/go-twitter/twitter"
+	"github.com/fatih/color"
 	"github.com/lyledean1/tweetbot/config"
 	"github.com/lyledean1/tweetbot/twit"
 	"github.com/urfave/cli"
@@ -41,7 +42,11 @@ func commands() {
 					panic(err)
 				}
 				for i, _ := range search.Statuses {
-					fmt.Println(fmt.Sprintf("Tweet `%s` from user `%s`",search.Statuses[i].Text, search.Statuses[i].User.Name))
+					if i % 2 == 0 {
+						color.Yellow("%s, User: %s", search.Statuses[i].Text, search.Statuses[i].User.Name)
+					} else {
+						color.Green("%s, User: %s", search.Statuses[i].Text, search.Statuses[i].User.Name)
+					}
 				}
 			},
 		},
@@ -54,12 +59,12 @@ func commands() {
 				Usage: "Text for tweet",
 			}},
 			Action: func(c *cli.Context) {
-				tweet := c.String("t")
-				err := twitterClient.UpdateStatus(tweet, nil)
+				text := c.String("t")
+				tweet, err := twitterClient.UpdateStatus(text, nil)
 				if err != nil {
 					panic(fmt.Sprintf("Cannot post tweet %s", tweet))
 				}
-				fmt.Println(fmt.Sprintf("Tweet %s posted successfully", tweet))
+				fmt.Println(fmt.Sprintf("Tweet %s posted successfully with id %d", tweet.Text, tweet.ID))
 			},
 		},
 	}

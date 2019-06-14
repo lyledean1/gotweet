@@ -12,9 +12,9 @@ func NewTwitterClient(client *twitter.Client) *TwitterClient {
 	return &TwitterClient{client: client}
 }
 
-func (tc *TwitterClient) UpdateStatus(tweet string, updateParams *twitter.StatusUpdateParams) error {
-	_, _, err := tc.client.Statuses.Update(tweet, updateParams)
-	return err
+func (tc *TwitterClient) UpdateStatus(tweet string, updateParams *twitter.StatusUpdateParams) (*twitter.Tweet, error) {
+	id, _, err := tc.client.Statuses.Update(tweet, updateParams)
+	return id, err
 }
 
 func (tc *TwitterClient) Search(searchParams *twitter.SearchTweetParams) (*twitter.Search, error) {
@@ -24,3 +24,4 @@ func (tc *TwitterClient) Search(searchParams *twitter.SearchTweetParams) (*twitt
 	}
 	return search, err
 }
+
