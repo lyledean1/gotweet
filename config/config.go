@@ -27,7 +27,7 @@ func GetTwitterConfig() TwitterConfig {
 	if err != nil {
 		log.Fatal( err )
 	}
-	file, err := ioutil.ReadFile(fmt.Sprintf("%s/twitter-env.yaml", usr.HomeDir))
+	file, err := ioutil.ReadFile(fmt.Sprintf("%s/.gotweet.yaml", usr.HomeDir))
 	if err != nil {
 		panic(err)
 	}

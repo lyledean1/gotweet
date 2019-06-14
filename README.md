@@ -7,7 +7,7 @@ https://developer.twitter.com/
 
 Set up enviroment variables from twitter-env-example.yaml and save this as twitter-env.yaml in your home directory.
 
-I.e ```$HOME/twitter-env.yaml```
+I.e ```$HOME/.gotweet.yaml```
 
 ```
 auth:
