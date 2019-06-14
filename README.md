@@ -17,6 +17,16 @@ auth:
   accessTokenSecret: TOKENSECRET
 ```
 
+To get the latest version, which should add this to the go/bin folder
+
+```go get github.com/lyledean1/gotweet```
+
+And finally make sure that the path is linked to the go bin path.
+
+```export PATH=$PATH:$GOPATH/bin ```
+
+### Build the binary from source
+
 To build the binary run 
 ```go build -mod vendor -o ./bin/gotweet ./cmd/main.go```
 
@@ -25,9 +35,6 @@ To add the binary to the Go bin path,
 ```
  cp ./bin/gotweet ~/go/bin/   
 ```
-And finally make sure that the path is linked to the go bin path.
-
-```export PATH=$PATH:$GOPATH/bin ```
 
 ### Commands 
 
