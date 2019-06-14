@@ -37,11 +37,9 @@ var tweetCmd = &cobra.Command{
 		}
 		fmt.Println(fmt.Sprintf("Tweet %s posted successfully with id %d", tweet.Text, tweet.ID))
 	},
-
 }
 
 func init() {
 	rootCmd.AddCommand(tweetCmd)
-	rootCmd.Flags().StringP("text", "t", "", "Set the text for the tweet")
-
+	tweetCmd.Flags().StringP("text", "t", "", "Set the text for the tweet")
 }

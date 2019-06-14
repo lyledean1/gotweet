@@ -16,6 +16,7 @@ limitations under the License.
 package cmd
 
 import (
+	"fmt"
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
@@ -29,7 +30,8 @@ var searchCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		query, _:= cmd.Flags().GetString("query")
 		if query == "" {
-			panic("No text set for tweet")
+			fmt.Println("No query set for search")
+			return
 		}
 		search, err := twitterClient.Search(&twitter.SearchTweetParams{
 			Query: query,
@@ -49,5 +51,5 @@ var searchCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(searchCmd)
-	rootCmd.Flags().StringP("query", "q", "", "Set query for searching twitter")
+	searchCmd.Flags().StringP("query", "q", "", "Set query for searching twitter")
 }
