@@ -1,6 +1,10 @@
 ### Go tweet!
 
-Set up enviroment variables from twitter-env-example.yaml and save this as twitter-env.yaml
+This uses the developer API in twitter so you will have to set up an account with the correct permissions.
+
+Set up enviroment variables from twitter-env-example.yaml and save this as twitter-env.yaml in your home directory.
+
+I.e ```$HOME/twitter-env.yaml```
 
 ```
 auth:
