@@ -41,7 +41,7 @@ func commands() {
 					panic(err)
 				}
 				for i, _ := range search.Statuses {
-					fmt.Println(fmt.Sprintf("Tweet `%s` from user `%s`",search.Statuses[i].Text, search.Statuses[i].User))
+					fmt.Println(fmt.Sprintf("Tweet `%s` from user `%s`",search.Statuses[i].Text, search.Statuses[i].User.Name))
 				}
 			},
 		},
@@ -55,10 +55,9 @@ func commands() {
 			}},
 			Action: func(c *cli.Context) {
 				tweet := c.String("t")
-				//twitterClient.UpdateStatus("Saturdays are for chilling", nil)
 				err := twitterClient.UpdateStatus(tweet, nil)
 				if err != nil {
-					panic("Cannot post tweet")
+					panic(fmt.Sprintf("Cannot post tweet %s", tweet))
 				}
 				fmt.Println(fmt.Sprintf("Tweet %s posted successfully", tweet))
 			},
